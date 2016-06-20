@@ -13,10 +13,9 @@ FILES_DIR="$SCRIPT_DIR/files"
 HOME_DIR="$(realpath ~)"
 
 exit_usage() {
-    echo 'Usage:'
-    echo '    ./sync.sh get      Collect dotfiles from your home into directory "files/".'
-    echo '    ./sync.sh set      Get dotfiles from directory "files/" ans install into'
-    echo '                       your home.'
+    echo 'Usage'
+    echo './sync.sh get      Collect dotfiles from your home into directory "files/".'
+    echo './sync.sh set      Get dotfiles from directory "files/" ans install into your home.'
     exit 1
 }
 

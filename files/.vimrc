@@ -32,6 +32,6 @@ filetype plugin on
 filetype plugin indent on
 syntax enable
 
-" Disable syntax highlite in diff mode
+" Disable syntax highlight in diff mode
 au FilterWritePre * if &diff | set syntax=off | endif
 au FilterWritePost * if &diff | set syntax=on | endif

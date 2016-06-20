@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Collect all my dotfiles into place.
+# Syncronize system dotfiles with this repo.
 
 FILES=(
     '.tmux.conf'
@@ -14,9 +14,9 @@ HOME_DIR="$(realpath ~)"
 
 exit_usage() {
     echo 'Usage:'
-    echo '    ./files.sh get      Collect dotfiles from my home into directory "files/".'
-    echo '    ./files.sh set      Get dotfiles from directory "files/" ans install into'
-    echo '                        my home.'
+    echo '    ./sync.sh get      Collect dotfiles from your home into directory "files/".'
+    echo '    ./sync.sh set      Get dotfiles from directory "files/" ans install into'
+    echo '                       your home.'
     exit 1
 }
 

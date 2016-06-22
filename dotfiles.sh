@@ -9,13 +9,14 @@ FILES=(
     '.gitignore'
 )
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_NAME="$0"
 FILES_DIR="$SCRIPT_DIR/files"
 HOME_DIR="$(realpath ~)"
 
 exit_usage() {
-    echo 'Usage'
-    echo './sync.sh get      Collect dotfiles from your home into directory "files/".'
-    echo './sync.sh set      Get dotfiles from directory "files/" ans install into your home.'
+    echo 'Usage:'
+    echo "$SCRIPT_NAME collect      Collect dotfiles from your home into directory "files/"."
+    echo "$SCRIPT_NAME install      Get dotfiles from directory "files/" ans install into your home."
     exit 1
 }
 
@@ -24,7 +25,7 @@ exit_on_file() {
     exit 1
 }
 
-get_func() {
+collect() {
     for F in ${FILES[*]}
     do
         CMD="cp $HOME_DIR/$F $FILES_DIR/$F"
@@ -33,7 +34,7 @@ get_func() {
     done
 }
 
-set_func() {
+install() {
     for F in ${FILES[*]}
     do
         CMD="cp $FILES_DIR/$F $HOME_DIR/$F"
@@ -44,11 +45,11 @@ set_func() {
 
 main() {
     case "$1" in
-        'get')
-            get_func
+        'collect')
+            collect
             ;;
-        'set')
-            set_func
+        'install')
+            install
             ;;
         *)
             exit_usage

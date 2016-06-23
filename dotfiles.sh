@@ -41,11 +41,17 @@ collect() {
 }
 
 install() {
+    cd "$SCRIPT_DIR"
     for F in ${FILES[*]}
     do
-        CMD="cp $FILES_DIR/$F $HOME_DIR/$F"
-        echo "$CMD"
-        $CMD || exit_on_file "$F"
+        F1="$HOME_DIR/$F"
+        F2="$FILES_DIR/$F"
+        cmp --silent "$F1" "$F2"
+        if [ "1" = "$?" ]
+        then
+            echo "Install ~/$F"
+            cp "$F2" "$F1" || exit_on_file "$F"
+        fi
     done
 }
 

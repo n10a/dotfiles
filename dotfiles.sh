@@ -8,8 +8,8 @@ FILES=(
     '.bashrc'
     '.gitignore'
 )
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SCRIPT_NAME="$0"
+SCRIPT_DIR="$( cd "$( dirname $( readlink -f "${BASH_SOURCE[0]}" ) )" && pwd )"
+SCRIPT_NAME="$( basename $0 )"
 FILES_DIR="$SCRIPT_DIR/files"
 HOME_DIR="$(realpath ~)"
 
@@ -26,11 +26,17 @@ exit_on_file() {
 }
 
 collect() {
+    cd "$SCRIPT_DIR"
     for F in ${FILES[*]}
     do
-        CMD="cp $HOME_DIR/$F $FILES_DIR/$F"
-        echo "$CMD"
-        $CMD || exit_on_file "$F"
+        F1="$HOME_DIR/$F"
+        F2="$FILES_DIR/$F"
+        cmp --silent "$F1" "$F2"
+        if [ "1" = "$?" ]
+        then
+            echo "Collect ~/$F"
+            cp "$F1" "$F2" || exit_on_file "$F"
+        fi
     done
 }
 
@@ -43,6 +49,13 @@ install() {
     done
 }
 
+push() {
+    cd "$SCRIPT_DIR"
+    git add --all
+    git commit -m "Commit by 'dotfiles push'"
+    git push
+}
+
 main() {
     case "$1" in
         'collect')
@@ -50,6 +63,9 @@ main() {
             ;;
         'install')
             install
+            ;;
+        'push')
+            push
             ;;
         *)
             exit_usage

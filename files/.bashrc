@@ -116,3 +116,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# My custom utils
+PATH="$PATH:$HOME/.bin"
+

@@ -17,6 +17,7 @@ exit_usage() {
     echo 'Usage:'
     echo "$SCRIPT_NAME collect      Collect dotfiles from your home into directory "files/"."
     echo "$SCRIPT_NAME install      Get dotfiles from directory "files/" ans install into your home."
+    echo "$SCRIPT_NAME push         Send collected dotfiles to git repo."
     exit 1
 }
 

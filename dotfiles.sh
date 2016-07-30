@@ -33,7 +33,8 @@ collect() {
         F1="$HOME_DIR/$F"
         F2="$FILES_DIR/$F"
         cmp --silent "$F1" "$F2"
-        if [ "1" = "$?" ]
+        echo "$? $F1 $F2"
+        if [ "0" != "$?" ]
         then
             echo "Collect ~/$F"
             cp "$F1" "$F2" || exit_on_file "$F"
@@ -48,7 +49,7 @@ install() {
         F1="$HOME_DIR/$F"
         F2="$FILES_DIR/$F"
         cmp --silent "$F1" "$F2"
-        if [ "1" = "$?" ]
+        if [ "0" != "$?" ]
         then
             echo "Install ~/$F"
             cp "$F2" "$F1" || exit_on_file "$F"

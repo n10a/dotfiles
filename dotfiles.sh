@@ -7,6 +7,7 @@ FILES=(
     '.vimrc'
     '.bashrc'
     '.gitignore'
+    '.gitconfig'
 )
 SCRIPT_DIR="$( cd "$( dirname $( readlink -f "${BASH_SOURCE[0]}" ) )" && pwd )"
 SCRIPT_NAME="$( basename $0 )"

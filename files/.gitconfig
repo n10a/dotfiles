@@ -1,0 +1,7 @@
+[push]
+	default = simple
+[user]
+	email = aleksandr.zharinov@saprun.com
+	name = Alexander Zharinov
+[core]
+	excludesfile = ~/.gitignore

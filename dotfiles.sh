@@ -34,7 +34,6 @@ collect() {
         F1="$HOME_DIR/$F"
         F2="$FILES_DIR/$F"
         cmp --silent "$F1" "$F2"
-        echo "$? $F1 $F2"
         if [ "0" != "$?" ]
         then
             echo "Collect ~/$F"

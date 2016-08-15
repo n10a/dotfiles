@@ -120,3 +120,6 @@ fi
 # My custom utils
 PATH="$PATH:$HOME/.bin"
 
+# Set home for virtualenvwrapper
+export WORKON_HOME=~/.venvs
+source virtualenvwrapper.sh
